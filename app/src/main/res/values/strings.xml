@@ -3,4 +3,22 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Label for Sort Preference -->
+    <string name="pref_sort_label">Sort</string>
+
+    <!-- Label for Most Popluar sort option in sort preference -->
+    <string name="pref_sort_label_popular">Most Popular</string>
+
+    <!-- Label for Highest Rating sort option in sort preference -->
+    <string name="pref_sort_label_highrating">Highest Rating</string>
+
+    <!-- Value in SharedPreferences for Most Popular sort option -->
+    <string name="pref_sort_popular" translatable="false">popular</string>
+
+    <!-- Value in SharedPreferences for Highest Rating sort option-->
+    <string name="pref_sort_highrating" translatable="false">highrating</string>
+
+    <!-- Key name for sorting preference in SharedPreference file -->
+    <string name="pref_sort_key" translatable="false">sort</string>
 </resources>
