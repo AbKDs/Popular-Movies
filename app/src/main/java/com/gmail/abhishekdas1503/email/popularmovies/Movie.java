@@ -15,19 +15,19 @@ public class Movie {
         this.mName = mName;
     }
 
-    public Bitmap getmPoster() {
+    public Bitmap getPoster() {
         return mPoster;
     }
 
-    public void setmPoster(Bitmap mPoster) {
+    public void setPoster(Bitmap mPoster) {
         this.mPoster = mPoster;
     }
 
-    public String getmName() {
+    public String getName() {
         return mName;
     }
 
-    public void setmName(String mName) {
+    public void setName(String mName) {
         this.mName = mName;
     }
 }
