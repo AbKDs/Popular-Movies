@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.gmail.abhishekdas1503.email.popularmovies.model.Movie;
+
 import java.util.List;
 
 /**

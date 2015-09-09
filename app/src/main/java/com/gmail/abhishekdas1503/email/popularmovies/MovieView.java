@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.gmail.abhishekdas1503.email.popularmovies.model.Movie;
+
 /**
  * A custom implementaion of a view which extends from a LinearLayout
  * and is helps in avoid ViewHolder class by saving the views in the

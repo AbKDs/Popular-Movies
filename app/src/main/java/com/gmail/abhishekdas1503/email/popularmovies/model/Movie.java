@@ -1,4 +1,4 @@
-package com.gmail.abhishekdas1503.email.popularmovies;
+package com.gmail.abhishekdas1503.email.popularmovies.model;
 
 import android.graphics.Bitmap;
 
