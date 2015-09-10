@@ -17,7 +17,6 @@ import com.gmail.abhishekdas1503.email.popularmovies.model.Movie;
 public class MovieView extends LinearLayout {
 
     private ImageView mImageView;
-    private TextView mTextView;
 
     /** Inherited constructor. */
     public MovieView(Context context) {
@@ -38,14 +37,12 @@ public class MovieView extends LinearLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         mImageView = (ImageView) findViewById(R.id.grid_item_imageview);
-        mTextView  = (TextView) findViewById(R.id.grid_item_textview);
     }
 
     public void showMovie(Movie movie) {
-        Bitmap poster = movie.getPoster();
+        String path = movie.getPosterPath();
         String movieName = movie.getName();
 
         mImageView.setImageBitmap(poster);
-        mTextView.setText(movieName);
     }
 }
