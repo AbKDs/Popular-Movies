@@ -29,7 +29,6 @@ public class MovieAdapter extends BaseAdapter {
     public MovieAdapter(Context context, List<Movie> movieList) {
         mMovieList = movieList;
         mContext = context;
-
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -51,6 +50,16 @@ public class MovieAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    /**
+     * @param list ( list of movie to be added )
+     * Adds a list of movies to the current list and notifies
+     * the system about change in the list
+     */
+    public void addAll(List<Movie> list) {
+        mMovieList.addAll(list);
+        notifyDataSetChanged();
     }
 
     @Override
