@@ -58,6 +58,6 @@ public class MovieView extends LinearLayout {
                 .appendPath(path)
                 .build();
 
-        Picasso.with(getContext()).load(uri).into(mImageView);
+        Picasso.with(getContext()).load(uri).placeholder(R.drawable.placeholder).into(mImageView);
     }
 }
