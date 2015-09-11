@@ -21,4 +21,5 @@
 
     <!-- Key name for sorting preference in SharedPreference file -->
     <string name="pref_sort_key" translatable="false">sort</string>
+    <string name="title_activity_detail">DetailActivity</string>
 </resources>
