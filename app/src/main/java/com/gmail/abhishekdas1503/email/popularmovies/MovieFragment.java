@@ -2,7 +2,9 @@ package com.gmail.abhishekdas1503.email.popularmovies;
 
 
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,9 +52,15 @@ public class MovieFragment extends Fragment {
         GridView gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
         gridView.setAdapter(mMovieAdapter);
 
-        updateMovies();
+        // updateMovies();
 
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        updateMovies();
     }
 
     /**
@@ -65,10 +73,14 @@ public class MovieFragment extends Fragment {
         final RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint("http://api.themoviedb.org/3/discover")
                 .build();
-        String sortKey = "popularity.desc";
+        // String sortKey = "popularity.desc";
         TMovieDBService service = restAdapter.create(TMovieDBService.class);
 
-        service.getMovieResponse(sortKey, ApiKey.API_KEY,
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String sortKey = prefs.getString("sortkey", "");
+        String key = getQuery(sortKey);
+
+        service.getMovieResponse(key, ApiKey.API_KEY,
                 new Callback<MovieResponse>() {
                     @Override
                     public void success(MovieResponse movieResponse, Response response) {
@@ -82,5 +94,14 @@ public class MovieFragment extends Fragment {
                         Toast.makeText(getActivity(), "Failed !", Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    /**
+     * @param sortKey
+     * Takes in the preference and returns the key to be passed
+     * to the api to get the movies
+     * */
+    String getQuery(String sortKey) {
+        return sortKey.equals("popular")?"popularity.desc":"vote_average.desc";
     }
 }
