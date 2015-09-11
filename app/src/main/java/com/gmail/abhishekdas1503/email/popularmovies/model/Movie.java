@@ -1,17 +1,21 @@
 package com.gmail.abhishekdas1503.email.popularmovies.model;
 
-
 /**
  * Movie class whose object which stores all the details about a movie
  * downloaded from the movieDB API.
  */
+
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie {
+public class Movie implements Parcelable {
 
     @Expose
     private Boolean adult;
@@ -49,6 +53,18 @@ public class Movie {
     @SerializedName("vote_count")
     @Expose
     private Integer voteCount;
+
+    /**
+     * Constructor for getting data from parcelable
+     */
+    public Movie(String title, String releaseDate, String overview,
+                 double voteAverage, String posterPath) {
+        this.title = title;
+        this.releaseDate = releaseDate;
+        this.overview = overview;
+        this.voteAverage = voteAverage;
+        this.posterPath = posterPath;
+    }
 
     /**
      * @return The adult
@@ -246,4 +262,54 @@ public class Movie {
         this.voteCount = voteCount;
     }
 
+    // Parcelable methods
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final String KEY_OVERVIEW = "overview";
+    public static final String KEY_RELEASE_DATE = "releaseDate";
+    public static final String KEY_POSTER_PATH = "posterPath";
+    public static final String KEY_TITLE = "title";
+    public static final String KEY_VOTE_AVERAGE = "voteAverage";
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        // new bundle for key value pairs
+        Bundle bundle = new Bundle();
+
+        // key value pairs
+        bundle.putString(KEY_OVERVIEW, overview);
+        bundle.putString(KEY_RELEASE_DATE, releaseDate);
+        bundle.putString(KEY_POSTER_PATH, posterPath);
+        bundle.putString(KEY_TITLE, title);
+        bundle.putDouble(KEY_VOTE_AVERAGE, voteAverage);
+
+        // write key value pairs to parcel
+        dest.writeBundle(bundle);
+    }
+
+    /**
+     * Creator required for class implementing the parcelable interface.
+     */
+    public static final Parcelable.Creator<Movie> CREATOR = new Creator<Movie>() {
+
+        @Override
+        public Movie createFromParcel(Parcel source) {
+            // read the bundle containing key value pairs from the parcel
+            Bundle bundle = source.readBundle();
+
+            // instantiate a person using values from the bundle
+            return new Movie(bundle.getString(KEY_TITLE), bundle.getString(KEY_RELEASE_DATE),
+                    bundle.getString(KEY_OVERVIEW), bundle.getDouble(KEY_VOTE_AVERAGE),
+                    bundle.getString(KEY_POSTER_PATH));
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+
+    };
 }
