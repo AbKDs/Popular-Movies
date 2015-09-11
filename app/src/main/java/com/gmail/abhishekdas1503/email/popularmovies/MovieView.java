@@ -50,14 +50,19 @@ public class MovieView extends LinearLayout {
 
     public void showMovie(Movie movie) {
         String path = movie.getPosterPath();
-        String name = movie.getTitle();
-        path = path.replaceFirst("/", "");
+        // String name = movie.getTitle();
 
-        Uri uri = Uri.parse(MOVIE_BASE_URL).buildUpon()
-                .appendPath(SIZE)
-                .appendPath(path)
-                .build();
+        if (path != null) {
+            path = path.replaceFirst("/", "");
 
-        Picasso.with(getContext()).load(uri).placeholder(R.drawable.placeholder).into(mImageView);
+            Uri uri = Uri.parse(MOVIE_BASE_URL).buildUpon()
+                    .appendPath(SIZE)
+                    .appendPath(path)
+                    .build();
+
+            Picasso.with(getContext()).load(uri).placeholder(R.drawable.placeholder).into(mImageView);
+        } else {
+            Picasso.with(getContext()).load(R.drawable.placeholder).into(mImageView);
+        }
     }
 }
