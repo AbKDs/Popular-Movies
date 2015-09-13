@@ -2,12 +2,14 @@ package com.gmail.abhishekdas1503.email.popularmovies;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -52,7 +54,16 @@ public class MovieFragment extends Fragment {
         GridView gridView = (GridView) rootView.findViewById(R.id.gridview_movies);
         gridView.setAdapter(mMovieAdapter);
 
-        // updateMovies();
+        // Listener for Movie objects
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Movie movie = (Movie) mMovieAdapter.getItem(position);
+                Intent movieIntent = new Intent(getActivity(), DetailActivity.class);
+                movieIntent.putExtra("movie", movie);
+                startActivity(movieIntent);
+            }
+        });
 
         return rootView;
     }
