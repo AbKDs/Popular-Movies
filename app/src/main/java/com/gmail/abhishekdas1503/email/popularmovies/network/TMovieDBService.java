@@ -13,6 +13,10 @@ import retrofit.http.Query;
 public interface TMovieDBService {
     @GET("/movie")
     void getMovieResponse(@Query("sort_by") String sortKey,
+/*                          @Query("certification_country") String country,
+                          @Query("certification") String certify,*/
+//                          @Query("vote_count.gte") String votes,
                           @Query("api_key") String apiKey,
+
                           Callback<MovieResponse> response);
 }
