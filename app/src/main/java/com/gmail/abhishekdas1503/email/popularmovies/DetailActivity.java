@@ -6,12 +6,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class DetailActivity extends AppCompatActivity {
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        setTitle("Movie Details");
         // If no past savedState available attach a new fragment
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
