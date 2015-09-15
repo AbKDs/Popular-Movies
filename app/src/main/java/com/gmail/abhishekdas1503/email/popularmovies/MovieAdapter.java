@@ -58,6 +58,7 @@ public class MovieAdapter extends BaseAdapter {
      * the system about change in the list
      */
     public void addAll(List<Movie> list) {
+        mMovieList.clear();
         mMovieList.addAll(list);
         notifyDataSetChanged();
     }
