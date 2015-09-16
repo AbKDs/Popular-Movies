@@ -19,7 +19,21 @@ public class MovieView extends LinearLayout {
 
     private ImageView mImageView;
     private static final String MOVIE_BASE_URL = "http://image.tmdb.org/t/p";
-    private static final String SIZE = "w185";
+    private final String SIZE = getAppropriateSize();
+
+    /**
+     * @return Appropriate size of image
+     *
+     * Utility function to get what size of image
+     * should be downloaded.
+     */
+    private String getAppropriateSize() {
+       if (Connectivity.isConnectedFast(getContext())) {
+           return "w185";
+       } else {
+           return "w342";
+       }
+    }
 
     private DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
     private float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
