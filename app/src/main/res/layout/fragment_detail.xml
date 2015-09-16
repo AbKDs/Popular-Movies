@@ -24,13 +24,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/poster"
-                android:layout_width="150dp"
-                android:layout_height="229dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="10dp" />
+            <com.gmail.abhishekdas1503.email.popularmovies.MovieView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/poster">
+                <ImageView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_height="229dp"
+                    android:layout_width="150dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/grid_item_imageview"
+                    android:padding="0dp"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    >
+                </ImageView>
+            </com.gmail.abhishekdas1503.email.popularmovies.MovieView>
 
             <TextView
                 android:id="@+id/release"
