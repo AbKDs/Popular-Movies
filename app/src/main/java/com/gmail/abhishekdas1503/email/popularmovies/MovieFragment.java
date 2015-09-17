@@ -29,6 +29,7 @@ import retrofit.client.Response;
  * Encapsulates fetching the movie details and displaying it as {@link GridView} layout
  */
 public class MovieFragment extends Fragment {
+    public static final String API_KEY = /*YOUR API KEY HERE */;
     private MovieAdapter mMovieAdapter;
     private List<Movie> mMovieList = new ArrayList<>();
 
@@ -91,7 +92,7 @@ public class MovieFragment extends Fragment {
         String sortKey = prefs.getString("sortkey", "");
         String key = getQuery(sortKey);
 
-        service.getMovieResponse(key, ApiKey.API_KEY,
+        service.getMovieResponse(key, API_KEY,
                 new Callback<MovieResponse>() {
                     @Override
                     public void success(MovieResponse movieResponse, Response response) {
