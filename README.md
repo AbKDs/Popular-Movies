@@ -8,19 +8,20 @@ Usage
 --------
 Currently I don't have any intent to make it a production app. In the code 
 you need to have your own API key provided by TMDB. So to build the apk 
-include in the app/src/main/java/com/gmail/abhishekdas1503/email/popularmovies
-a file named `ApiKey.java` which contains nothing but a constant `API_KEY`.
+in the `app/src/main/java/com/gmail/abhishekdas1503/email/popularmovies`
+in `MovieFragment.java` which contains a constant `API_KEY`.
 
-Your `ApiKey.java` should look like : 
+`MovieFragment.java` should look like : 
 ```
-package com.gmail.abhishekdas1503.email.popularmovies;
-
+...
 /**
- * A class that encapsulates the API_KEY
+ * Encapsulates fetching the movie details and displaying it as {@link GridView} layout
  */
-public class ApiKey {
-    public static final String API_KEY = /* Your API KEY here */ ;
-}
+public class MovieFragment extends Fragment {
+    public static final String API_KEY = /* YOUR API KEY HERE */;
+    
+    private MovieAdapter mMovieAdapter;
+...
 ```
 
-After adding this file you can build the app and install it on your device.
+Update it with your key and build.
